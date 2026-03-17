@@ -26,10 +26,9 @@ public class Carta {
 
         lblCarta.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
-                JOptionPane.showMessageDialog(null, " de " + getPinta());
+                JOptionPane.showMessageDialog(null, getNombre() + " de " + getPinta());
             }
         });
-
     }
 
     public Pinta getPinta() {
@@ -40,6 +39,14 @@ public class Carta {
         if (indice <= 39)
             return Pinta.CORAZON;
         return Pinta.DIAMANTE;
+    }
+
+    public NombreCarta getNombre() {
+        int residuo = indice % 13;
+        if (residuo == 0)
+            residuo = 13;
+        return NombreCarta.values()[residuo - 1];
+
     }
 
 }
