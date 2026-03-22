@@ -58,13 +58,22 @@ public class Jugador {
             
         
             int contador = 0;
+            int inicio = -1;
+            int fin = -1;
 
             for (int i = 0; i <= valores.length; i++) {
                 if (i < valores.length && valores[i]) {
+                    if (contador == 0)
+                        inicio = i;
+
                     contador++;
+                    fin = i;
                 } else {
                     if (contador >= 2)
-                        resultado += Grupo.values()[contador] + " en escalera de " + p + "\n";
+                        resultado += Grupo.values()[contador] + 
+                        " en escalera de " + p +
+                        " de " + NombreCarta.values()[inicio] +
+                        " a " + NombreCarta.values()[fin] + "\n";
 
                     contador = 0;
                 }
@@ -76,7 +85,7 @@ public class Jugador {
 
 
 
-   public int getPuntaje() {
+    public int getPuntaje() {
     int puntaje = 0;
 
     int[] contadores = new int[NombreCarta.values().length];
